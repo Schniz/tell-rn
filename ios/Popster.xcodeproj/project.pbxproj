@@ -34,10 +34,10 @@
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* PopsterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PopsterTests.m */; };
+		2FAB27877399B98717CB2263 /* Pods_Popster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDF258264996278D551BF065 /* Pods_Popster.framework */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		7A9DD83A1EFBEAEA00AA31FA /* libRCTFBLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9DD7E21EFBDB8900AA31FA /* libRCTFBLogin.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		BF83F73A6AE5D15B11E8CE86 /* libPods-Popster.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A1EB8765E40DE05C0A52FBAF /* libPods-Popster.a */; };
 		EBB0323FE4A84D0497531A58 /* libAirMaps.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC80339AC29F44CD97C2610F /* libAirMaps.a */; };
 /* End PBXBuildFile section */
 
@@ -287,11 +287,11 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		9FA6A4902AB0641C0BED87F1 /* Pods-Popster.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popster.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Popster/Pods-Popster.debug.xcconfig"; sourceTree = "<group>"; };
-		A1EB8765E40DE05C0A52FBAF /* libPods-Popster.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Popster.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6CF4F4C99A449A9814F49CE /* RCTFBLogin.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBLogin.xcodeproj; path = "../node_modules/react-native-facebook-login/RCTFBLogin.xcodeproj"; sourceTree = "<group>"; };
 		BC80339AC29F44CD97C2610F /* libAirMaps.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libAirMaps.a; sourceTree = "<group>"; };
 		D8097566C74F44C8B5175268 /* AirMaps.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AirMaps.xcodeproj; path = "../node_modules/react-native-maps/lib/ios/AirMaps.xcodeproj"; sourceTree = "<group>"; };
 		E5D34566E4B461B113D40CE8 /* Pods-Popster.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Popster.release.xcconfig"; path = "Pods/Target Support Files/Pods-Popster/Pods-Popster.release.xcconfig"; sourceTree = "<group>"; };
+		FDF258264996278D551BF065 /* Pods_Popster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Popster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -320,7 +320,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				7A9DD83A1EFBEAEA00AA31FA /* libRCTFBLogin.a in Frameworks */,
 				EBB0323FE4A84D0497531A58 /* libAirMaps.a in Frameworks */,
-				BF83F73A6AE5D15B11E8CE86 /* libPods-Popster.a in Frameworks */,
+				2FAB27877399B98717CB2263 /* Pods_Popster.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +495,7 @@
 		7A9DD7CB1EFBC78300AA31FA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A1EB8765E40DE05C0A52FBAF /* libPods-Popster.a */,
+				FDF258264996278D551BF065 /* Pods_Popster.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1196,7 +1196,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 428NNXD4AF;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
@@ -1208,6 +1208,7 @@
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
+					"-v",
 				);
 				PRODUCT_NAME = Popster;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1221,7 +1222,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 428NNXD4AF;
-				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Frameworks/";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/Frameworks/",
+					"$(inherited)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-maps/lib/ios/**",
@@ -1233,6 +1237,7 @@
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
+					"-v",
 				);
 				PRODUCT_NAME = Popster;
 				VERSIONING_SYSTEM = "apple-generic";
