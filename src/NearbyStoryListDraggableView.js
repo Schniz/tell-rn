@@ -10,9 +10,10 @@ import {
   Text,
   FlatList
 } from "react-native";
+import CustomLayoutSpring from "./CustomLayoutSpringAnimation";
 import MaybeTouchable from "./MaybeTouchable";
 import NearbyStoryListItem from "./NearbyStoryListItem";
-import NearbyStoryList from './NearbyStoryList'
+import NearbyStoryList from "./NearbyStoryList";
 
 export default class NearbyStoryListDraggableView extends React.Component {
   state = { expandedKey: null, open: false, scroll: new Animated.Value(0) };
@@ -32,7 +33,7 @@ export default class NearbyStoryListDraggableView extends React.Component {
   });
 
   setOpen = open => {
-    LayoutAnimation.spring();
+    LayoutAnimation.configureNext(CustomLayoutSpring);
     const expandedKey = open ? undefined : null;
     this.setState({ open, expandedKey });
   };
@@ -47,7 +48,32 @@ export default class NearbyStoryListDraggableView extends React.Component {
         {...this.panResponder.panHandlers}
         style={{
           height: windowHeight - 100,
-          width: windowWidth,
+          width: this.state.scroll.interpolate(
+            this.state.open
+              ? {
+                  inputRange: [0, 250],
+                  outputRange: [windowWidth, windowWidth - 30],
+                  extrapolate: "clamp"
+                }
+              : {
+                  inputRange: [-windowHeight / 2, 0],
+                  outputRange: [windowWidth, windowWidth - 30],
+                  extrapolate: "clamp"
+                }
+          ),
+          left: this.state.scroll.interpolate(
+            this.state.open
+              ? {
+                  inputRange: [0, 250],
+                  outputRange: [0, 15],
+                  extrapolate: "clamp"
+                }
+              : {
+                  inputRange: [-windowHeight / 2, 0],
+                  outputRange: [0, 15],
+                  extrapolate: "clamp"
+                }
+          ),
           top: this.state.open ? 100 : windowHeight - 100,
           position: "absolute",
           transform: [
@@ -73,7 +99,7 @@ export default class NearbyStoryListDraggableView extends React.Component {
           open={this.state.open}
           setOpenFn={this.setOpen}
           expandedKey={this.state.expandedKey}
-          expandFn={expandedKey => this.setState({expandedKey})}
+          expandFn={expandedKey => this.setState({ expandedKey })}
         />
       </Animated.View>
     );

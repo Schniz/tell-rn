@@ -3,7 +3,8 @@ import { TouchableOpacity } from "react-native";
 
 export default class MaybeTouchable extends React.Component {
   render() {
-    const { condition, ...props } = this.props;
-    return condition ? <TouchableOpacity {...props} /> : props.children;
+    const { component: Component, condition, ...props } = this.props;
+    const C = Component || TouchableOpacity;
+    return condition ? <C {...props} /> : props.children;
   }
 }

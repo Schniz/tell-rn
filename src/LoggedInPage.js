@@ -1,10 +1,52 @@
 import React from "react";
-import { Dimensions, TouchableOpacity, StyleSheet, View, Text } from "react-native";
+import { Dimensions, Image, TouchableOpacity, StyleSheet, View, Text } from "react-native";
 import GetCurrentLocation from './GetCurrentLocation';
 import MapView from 'react-native-maps';
-import {Motion, spring} from 'react-motion'
 import MarkerCallout from './MarkerCallout'
 import NearbyStoryListDraggableView from './NearbyStoryListDraggableView';
+import {Motion, spring} from 'react-motion'
+
+class Logo extends React.Component {
+  state = { loaded: false }
+
+  onLoad = () => {
+    this.setState({loaded: true})
+    this.onLoad = () => {}
+  }
+
+  render() {
+    return (
+      <Motion
+        defaultStyle={{scale: 0}}
+        style={{scale: spring(this.state.loaded ? 1 : 0)}}
+      >
+        {({scale}) => (
+          <View
+            style={{
+              width: 50,
+              height: 50,
+              position: 'absolute',
+              left: 10,
+              top: 20,
+              transform: [{ scale }],
+              borderRadius: 25,
+              shadowRadius: 7,
+              shadowOpacity: .4,
+              backgroundColor: 'red',
+            }}
+          >
+            <Image
+              source={this.props.source}
+              onLoadStart={() => this.setState({loaded: false})}
+              onLoadEnd={() => setTimeout(this.onLoad, 100)}
+              style={[StyleSheet.absoluteFill, { borderRadius: 25 }]}
+            />
+          </View>
+        )}
+      </Motion>
+    )
+  }
+}
 
 class EmojiButton extends React.Component {
   render() {
@@ -63,6 +105,9 @@ export default class MapPage extends React.Component {
               </View>
             ) : <Text>Loading...</Text>
           )}
+        />
+        <Logo
+          source={{ uri: `https://graph.facebook.com/${user.userId}/picture?width=200` }}
         />
       </View>
     );
