@@ -1,57 +1,65 @@
 import React from "react";
-import { LayoutAnimation, Animated, PanResponder, Dimensions, View, Text } from "react-native";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  LayoutAnimation,
+  Animated,
+  PanResponder,
+  Dimensions,
+  View,
+  Text,
+  FlatList
+} from "react-native";
+import MaybeTouchable from "./MaybeTouchable";
+import NearbyStoryListItem from "./NearbyStoryListItem";
 
 export default class NearbyStoryList extends React.Component {
-  state = { open: false, scroll: new Animated.Value(0) }
-  panResponder = PanResponder.create({
-    onMoveShouldSetResponderCapture: () => true,
-    onMoveShouldSetPanResponderCapture: () => true,
-    onPanResponderGrant: (e, gestureState) => {
-      this.state.scroll.setValue(0);
-    },
-
-    onPanResponderMove: Animated.event([
-      null, {dy: this.state.scroll},
-    ]),
-
-    onPanResponderRelease: (e, {vx, vy}) => {
-      LayoutAnimation.spring()
-      this.setState({open: vy < 0})
-      this.state.scroll.setValue(0)
-    }
-  })
-
-  // componentDidMount() {
-  //   this.state.scroll.addListener(value => console.log({value}))
-  // }
-
   render() {
-    const {width: windowWidth, height: windowHeight} = Dimensions.get('window')
-
     return (
-      <Animated.View
-        {...this.panResponder.panHandlers}
-        style={{
-          height: windowHeight - 100,
-          backgroundColor: 'red',
-          width: windowWidth,
-          top: this.state.open ? 100 : windowHeight - 100,
-          position: 'absolute',
-          transform: [{
-            translateY: this.state.scroll.interpolate(this.state.open ? {
-              inputRange: [0, 250],
-              outputRange: [0, 250],
-              extrapolate: 'clamp',
-            } : {
-              inputRange: [-windowHeight/2, 0],
-              outputRange: [-windowHeight + 200, 0],
-              extrapolate: 'clamp',
-            })
-          }],
-        }}
+      <MaybeTouchable
+        condition={!this.props.open}
+        style={{ flex: 1 }}
+        activeOpacity={0.9}
+        onPress={() => this.props.setOpenFn(true)}
       >
-        <Text>This is a list</Text>
-      </Animated.View>
-    )
+        <View style={{
+          shadowRadius: this.props.open ? 10 : 4,
+          shadowOpacity: this.props.open ? 0.3 : .2,
+        }} flex={1} backgroundColor='#f7f7f7'>
+          <Text style={{letterSpacing: 2, fontWeight: 'bold', fontSize: 12, padding: 10, color: '#444'}}>NEARBY STORIES</Text>
+        <FlatList
+          style={{ flex: 1 }}
+          data={[
+            {
+              title: "this is a story",
+              key: 1,
+              description: `Od yavo shalom aleynu\nOd yavo shalom aleynu!\nOd yavo shalom aleynu ve al kulam`
+            },
+            {
+              title: "a chikidana",
+              key: 2,
+              description: `Od yavo shalom aleynu\nOd yavo shalom aleynu!\nOd yavo shalom aleynu ve al kulam`
+            },
+            {
+              title: "cash flow",
+              key: 3,
+              description: `Od yavo shalom aleynu\nOd yavo shalom aleynu!\nOd yavo shalom aleynu ve al kulam`
+            }
+          ]}
+          renderItem={({ item }) =>
+            <NearbyStoryListItem
+              {...item}
+              expanded={this.props.expandedKey === item.key}
+              expandFn={() => {
+                LayoutAnimation.spring();
+                this.props.expandFn(item.key);
+              }}
+              clickable={this.props.open}
+              key={item.key}
+            />}
+          />
+        </View>
+        </MaybeTouchable>
+    );
   }
 }

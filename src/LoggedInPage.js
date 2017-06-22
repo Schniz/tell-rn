@@ -4,7 +4,7 @@ import GetCurrentLocation from './GetCurrentLocation';
 import MapView from 'react-native-maps';
 import {Motion, spring} from 'react-motion'
 import MarkerCallout from './MarkerCallout'
-import NearbyStoryList from './NearbyStoryList';
+import NearbyStoryListDraggableView from './NearbyStoryListDraggableView';
 
 class EmojiButton extends React.Component {
   render() {
@@ -47,18 +47,20 @@ export default class MapPage extends React.Component {
         <GetCurrentLocation
           render={({location}) => (
             location ? (
-              <MapView
-                style={StyleSheet.absoluteFill}
-                initialRegion={{
-                  latitude: location.coords.latitude,
-                  longitude: location.coords.longitude,
-                  latitudeDelta: 0.0922,
-                  longitudeDelta: 0.0421,
-                }}
-              >
-                <MeInTheMap coords={location.coords} />
-                <NearbyStoryList coords={location.coords} />
-              </MapView>
+              <View flex={1}>
+                <MapView
+                  style={StyleSheet.absoluteFill}
+                  initialRegion={{
+                    latitude: location.coords.latitude,
+                    longitude: location.coords.longitude,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                  }}
+                >
+                  <MeInTheMap coords={location.coords} />
+                </MapView>
+                <NearbyStoryListDraggableView coords={location.coords} />
+              </View>
             ) : <Text>Loading...</Text>
           )}
         />
